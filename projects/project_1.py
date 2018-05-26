@@ -19,6 +19,7 @@ cPickle (or _pickle) vs pickle
 It's almost always preferable to actually use the cPickle module rather than pickle because the former is written in C and is much faster. There are some subtle differences between them, but in most situations they're equivalent and the C version will provide greatly superior performance. Switching to it couldn't be easier, just change the import statement to this:
 # import cPickle as pickle
 """
+df = pd.DataFrame()
 
 
 class Person:
@@ -26,24 +27,16 @@ class Person:
     name = None
     dob = None
     p_dict = {}
-    col_names = ['Name', 'Age']
-    df = pd.DataFrame(columns=col_names)
 
     def __init__(self):
+        global df
+        self.data = read_object()
 
         self.addName()
         self.addDob()
         self.p_list = [self.name, self.dob]
-        self.p_dict[self.name] = self.p_list
-
-        ser1 = pd.Series(self.p_list)
-        ser1.name = self.name
-        ser1.head()
-        if self.df.empty:
-            self.df = pd.DataFrame([ser1], columns=["name", "age"])
-        else:
-            self.pd.DataFrame(np.insert(df.values, 0, values=ser1, axis=0))
-        print(self.df.head())
+        df = df.append({'Name': self.name, 'Dob': self.dob}, ignore_index=True)
+        print(df.head())
 
     def addName(self):
         try:
