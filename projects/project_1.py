@@ -21,36 +21,6 @@ It's almost always preferable to actually use the cPickle module rather than pic
 """
 
 
-df = pd.DataFrame({'type': list('ABB')
-                   # 'image': [np.random.random((64, 64,)) for i in range(3)],
-                   # 'temperature_vec': [np.random.random((60,)) for i in range(3)],
-                   # 'magnetic_field_vec': [np.random.random((60,)) for i in range(3)],
-                  })
-print(df)
-
-
-# Define lists2dict()
-def lists2dict(list1, list2):
-    """Return a dictionary where list1 provides
-    the keys and list2 provides the values."""
-
-    # Zip lists: zipped_lists
-    zipped_lists = zip(list1, list2)
-
-    # Create a dictionary: rs_dict
-    rs_dict = dict(zipped_lists)
-
-    # Return the dictionary
-    return rs_dict
-
-
-# Call lists2dict: rs_fxn
-rs_fxn = lists2dict([], [])
-
-# Print rs_fxn
-print(rs_fxn)
-
-
 class Person:
 
     name = None
