@@ -1,0 +1,78 @@
+1) Array and pointers(?)
+        How are arguments passed in functions (call by value or reference)
+        What happens when:
+            Def: Foo (a):
+                a[3]=10 return
+            a = [1,2,3,4,5]
+            foo(a)
+            Print (a)
+
+			Def foo (a):
+				print(id(a))
+		Assume variable “a” ultimately contains a number 1.
+
+	Scope of variable
+		Def foo():
+			#Print (s)
+			S = “local variable”
+			Print (“in foo”, s)
+		S = “global variable
+		Print (“in main”, s
+		foo()
+		Print (“in main”, s)
+		What happens if you un-comment 1st line of foo? How can you prevent it?
+2)__init__, __del__
+3) data-types
+	 There are 2 lists having same shape. Code to combine the lists and display the combine lists together. For eg a = [1, 2, 3, 4], b = [“a”, “b”,” c”, “d”]. Output = [[1,”a], [2,”b], [3, “c”], [4, “d”]
+	Do the same in one line of code
+		List-comprehension
+		Write a single function that based on the type of variables passed returns the merged one of that type
+
+Week 1 Project.
+    [Concepts involving python types, persistence, class, pickle, pandas, string, split]
+Write a class which takes input from console name of the person, and his/her date of birth. Then when the person’ name is typed it should display the dob.
+Some persons dob are secret so those should not be displayed, but will be stored. If a secret person name is entered then you should just display “secret”. However all the data should be persisted, and loaded. We can add to the list. What data structure would you create for these 2 problems
+[Suggestions by Shekar]: for a, and b) Can we use a concept of associative array in python?
+
+Create an addressBook class  as follows: Fname, LName, StreetAddress, City, State, Country, Mobile, email. Write a class which will take the input from the console into python memory and also store it in disk. It should also remember the data entered. Please note that only email, and phone numbers are guaranteed to be different. The program should not accept duplicate email/phone numbers All other fields could be duplicate. Design this as a compact class that optimizes on the memory as much as possible
+Function to find number of occurrences of a Fname.
+Function to find number of occurrences of a Lname.
+Function to find number of occurrences of a street.
+Write one function which can do all of the above 3 tasks
+
+/*
+Pseudo code:
+Fname =
+{
+	“Index” : [“Name” , 10]
+}Fname[0][0] = Name, FName[0][1] = 10
+Or
+FName = { “Name”: 2, “Name2”, 3…}
+Fn = Fname[“Laxman”]
+I have created a  class that will work similar to this concept. Please see the file dicExample.py
+*/
+[Shekar] Can we use one class for this?
+How will you ensure that different style for entering the street addresses are captured properly as same address for eg “1st Main Road, 2nd Cross” is same as “1st Main Rd,2nd Cross”, == “1stMain, 2nd Cr” == “1st Main2nd Cross” You can assume and state allowed abbreviations, and code accordingly. However take care of the case that the name of the road is “Road” or “Cross”. For eg you can have a street name as “1st Road” , or  “Cross road” etc.  What extra field can you use to guarantee that? Can you use any utilities to simplify this task? Hint try one of preprocessor, stemming.porter, ntlk.PorterStemmer.
+[shekar] For street address parsing can try this url.  https://www.scrapehero.com/how-to-parse-unstructured-addresses-using-python-and-google-geocoding-api/
+Do the same to read from an excel file (use Pandas), csv
+/*
+Say “Street” == “st”
+StreetAddDict[“street”] = “St”
+StreetAddDict[“strt”] = “St”
+
+Split the street address using whitespace, “,”,
+Read each token, and compare token to known abbreviations. ANd replace each with the abbreviation
+A = StreetAddDict.get(token, None)
+If A === none:
+	Store token in address
+Else
+	Store A in address
+
+*/
+
+d) You are going to write a neural network (later) which will take as input the image (of a particular pixel size, and rgb), and predict which vegetable it is. Design a Machine Learning Data set for this problem: There are 2 fields. InputImage, and output label. THe output composition can be as follows”brinjal”, “okhra”, “potato”, “tomato”, “mango”, and “none of the above”. How will you store the output as “ string or number or something else”?
+e) Write a program which will create a multi-dimension array using np. The program should read the data for each dimension from an excel file and store it.
+Csv, and pandas
+f) A student is asked to write an essay. These essays are already graded to two categories “pass” or “fail” based on some logic. Now once these are graded and results stored, given a new essay your program should automatically tell “pass” or “fail”. This solution will lead to Naive Bayes. For now design the data structure and a logic for encoding this structure. The essay will be read from a text file. What should be the format of the text file? Here is a simple logic to encode the data. For each word you read, you should be able to derive the following info very fast: which class it appears and number of times that word appears. More generically, lets say that instead of just “pass” or “Fail” you have data which has “A”, “B”, “C”, “D”, “Fail”. Your program should be able to handle this as well. ALl these labels will be available in the excel file. Please think of the appropriate data structure you will use to be able to read them fast.
+[shekar] Hint use a combination of list, etc in a dict?
+
