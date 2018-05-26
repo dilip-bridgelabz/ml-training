@@ -73,20 +73,7 @@ class Person:
             self.df = pd.DataFrame([ser1], columns=["name", "age"])
         else:
             self.pd.DataFrame(np.insert(df.values, 0, values=ser1, axis=0))
-
         print(self.df.head())
-        # list_of_dicts = [lists2dict(feature_names, sublist) for sublist in row_lists]
-        #
-        # # Turn list of dicts into a dataframe: df
-        # df = pd.DataFrame(list_of_dicts)
-        #
-        # # Print the head of the dataframe
-        # print(df.head())
-
-        # Create an empty table of lookup tables for each field name that maps
-        # each unique field value to a list of record-list indices of the ones
-        # that contain it.
-        # self.lookup_tables = defaultdict(lambda: defaultdict(list))
 
     def addName(self):
         try:
@@ -106,27 +93,6 @@ class Person:
         except ValueError:
             print('Invalid Dob!')
             self.addDob()
-
-    def retrieve(self, **kwargs):
-        """ Fetch a list of records with a field name with the value supplied
-            as a keyword arg (or return None if there aren't any). """
-
-        with open('person.pkl', 'rb') as f:
-            person = pickle.load(f)
-            print(person)
-        if len(kwargs) != 1: raise ValueError(
-            'Exactly one fieldname/keyword argument required for function '
-            '(%s specified)' % ', '.join([repr(k) for k in kwargs.keys()]))
-        field, value = list(kwargs.items())[0]  # Get only keyword arg and value.
-        if field not in self.valid_fieldnames:
-            raise ValueError('keyword arg "%s" isn\'t a valid field name' % field)
-        if field not in self.lookup_tables:  # Must create field look up table.
-            for index, record in enumerate(self.records):
-                value = getattr(record, field)
-                self.lookup_tables[field][value].append(index)
-        matches = [self.records[index]
-                    for index in self.lookup_tables[field].get(value, [])]
-        return matches if matches else None
 
 
 def save_object(obj, filename):
@@ -199,8 +165,4 @@ if __name__ == "__main__":
     except BreakIt:
         print("Exiting...")
         pass
-
-    # person =
-    # p.addName()
-    # p.addDob()
 
